@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBook from './NavBook'
 
 const ViewAllBooks = () => {
+  const [data,setData]=useState(
+    [ 
+      {"title":"HARRY POTTER","category":"fantasy","description":"Avery magical book","authorname":"POTTER","price":1500},
+      {"title":"PHYSICS","category":"Sci-Fi","description":"Avery Physical book","authorname":"NEUTON","price":600},
+      {"title":"LORD OF RINGS","category":"Sci-Fi","description":"Avery incredible book","authorname":"Kinger","price":1500}
+    ]
+  )
   return (
     <div>
 <NavBook/>
@@ -13,60 +20,26 @@ const ViewAllBooks = () => {
   <thead>
     <tr>
       <th scope="col">Book title</th>
+      <th scope="col">Category</th>
       <th scope="col">Author name</th>
-      <th scope="col">Published year</th>
+      <th scope="col">Description</th>
       <th scope="col">Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>GODFATHER</td>
-      <td>Newton</td>
-      <td>2002</td>
-      <td>1000/-</td>
-    </tr>
-    <tr>
-      <td>SHEDULER</td>
-      <td>Abdul</td>
-      <td>2000</td>
-      <td>1500/-</td>
-    </tr>
-    <tr>
-      <td>FATHER AND SON</td>
-      <td>Charles</td>
-      <td>1989</td>
-      <td>1000/-</td>
-    </tr>
-    <tr>
-      <td>ASUS</td>
-      <td>Tim</td>
-      <td>2012</td>
-      <td>1500/-</td>
-    </tr>
-    <tr>
-      <td>HP</td>
-      <td>Anna</td>
-      <td>2024</td>
-      <td>3000/-</td>
-    </tr>
-    <tr>
-      <td>GUJJU</td>
-      <td>Sagar</td>
-      <td>1999</td>
-      <td>500/-</td>
-    </tr>
-    <tr>
-      <td>GANDHI</td>
-      <td>Nehru</td>
-      <td>1918</td>
-      <td>200/-</td>
-    </tr>
-    <tr>
-      <td>KERNEL</td>
-      <td>Newton</td>
-      <td>1967</td>
-      <td>1500/-</td>
-    </tr>
+    {
+      data.map(
+        (value,index)=>{
+          return <tr>
+          <td>{value.title}</td>
+          <td>{value.category}</td>
+          <td>{value.description}</td>
+          <td>{value.authorname}</td>
+          <td>{value.price}</td>
+        </tr>
+        }
+      )
+    }
   </tbody>
 </table>
 
