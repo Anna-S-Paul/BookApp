@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBook from './NavBook'
+import axios from 'axios'
 
 const ViewAllBooks = () => {
-  const [data,setData]=useState(
-    [ 
-      {"title":"HARRY POTTER","category":"fantasy","description":"Avery magical book","authorname":"POTTER","price":1500},
-      {"title":"PHYSICS","category":"Sci-Fi","description":"Avery Physical book","authorname":"NEUTON","price":600},
-      {"title":"LORD OF RINGS","category":"Sci-Fi","description":"Avery incredible book","authorname":"Kinger","price":1500}
-    ]
-  )
+  const [data,setData]=useState([])
+  const fetchData=()=>{
+    axios.get("http://localhost:8082/viewall").then(
+    (response)=>{
+      setData(response.data)
+    }
+  ).catch().finally()
+  }
+  useEffect(()=>{fetchData()},[])
   return (
     <div>
 <NavBook/>
